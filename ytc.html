@@ -1,0 +1,61 @@
+<html>
+<head>
+
+<script>
+function ytm(){
+var principal=document.getElementById('principal').value;
+var pcrate=document.getElementById('crate').value;
+var ycr=document.getElementById('ycr').value;
+var sv=document.getElementById('ycv').value;
+var n=document.getElementById('time').value;
+var I= principal*pcrate/100;
+var cp=parseInt(sv, 10) + (sv*ycr)/100;
+//alert(cp);
+
+//var up=Math.pow((1+rate),-time);
+var uv=I+(cp-sv)/n;
+//var z = principal + sv;
+var z = parseInt(cp, 10) + parseInt(sv, 10);
+var dv = z/2;
+
+//alert(dv);
+var ip=document.getElementById('ip').value;
+
+if((principal==null||ycr==0)||(sv==null||n==0))document.getElementById('ip').value='Data Reqd.';
+else 
+document.getElementById('ip').value=((uv/dv)*100);
+}
+// Widget Code by https://karvitt.com/widgets/
+</script>
+<style>
+#outer{width:90%;max-width:600px;background:#fff;margin:0 auto}
+#cover{border:2px solid #111;padding:15px 0}
+.main{table-layout:fixed;width:94%;border:0;border-collapse:collapse;margin:0 auto}
+.main td{padding:0 8px;vertical-align:middle;border:0}
+.main input{width:100%;border:1px solid #ccc;margin:2px 0;padding:0 2%;height:22px;text-align:right}.ac{text-align:center}.b{font-weight:bold}
+.main select{width:100%;border:1px solid #ccc;margin:2px 0;background:#fff;height:22px}.w50{width:50%}.main button{width:100%;font-weight:bold;margin:3px 0}
+</style>
+</head>
+
+<body>
+<div id=outer><div class='ac b'>yield to call Calculator</div>
+<div id=cover>
+<form method=get name=ipc>
+<table class=main><col class=w55><col class=w45>
+<tr><td>Face Value<td><input id=principal>
+<tr><td>Coupon Rate %<td>
+<input id=crate>
+<tr><td>Yeild to Call Rate %<td>
+<input id=ycr>
+<tr><td>Yeild to Call value<td>
+<input id=ycv>
+<tr><td>Year to Call<td><input id=time>
+<tr><td><button type=reset>Reset</button><td><button type=button onclick=ytm()>Submit</button>
+<tr><td><b>Yield to Call %</b><td><input id=ip></table>
+</form>
+</div></div>
+
+
+</body>
+
+</html>
